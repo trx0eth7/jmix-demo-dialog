@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://someEntityEdit.caption"
+        focusComponent="form">
+    <data>
+        <instance id="someEntityDc"
+                  class="com.company.demodialog.entity.SomeEntity">
+            <fetchPlan extends="_base"/>
+            <loader/>
+        </instance>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="windowCommitAndClose"
+                caption="msg:///actions.SaveClose"
+                icon="EDITOR_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="windowCommit"
+                caption="msg:///actions.Save"
+                icon="SAVE"/>
+        <action id="windowClose"
+                caption="msg:///actions.Close"
+                icon="EDITOR_CANCEL"/>
+    </actions>
+    <dialogMode height="AUTO"
+                width="AUTO"
+                modal="true"
+                forceDialog="true"/>
+    <layout spacing="true" expand="formBox">
+        <vbox id="formBox" spacing="true">
+            <form id="form" dataContainer="someEntityDc">
+                <column width="350px">
+                    <textField id="nameField" property="name"/>
+                    <textField id="valueField" property="value"/>
+                    <checkBox id="flagField" property="flag"/>
+                </column>
+            </form>
+        </vbox>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="commitBtn" action="windowCommit"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>
